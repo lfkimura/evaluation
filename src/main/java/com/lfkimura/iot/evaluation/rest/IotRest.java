@@ -5,6 +5,7 @@ import com.lfkimura.iot.evaluation.iots.HeartBeater;
 import com.lfkimura.iot.evaluation.iots.SpeedMeasurer;
 import com.lfkimura.iot.evaluation.iots.TemperatureMeasurer;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,8 @@ public class IotRest {
     @ApiResponses(value = {@ApiResponse(code = 202, message = "ACCEPTED"),
             @ApiResponse(code = 400, message = "", response = DeviceDataResponseDTO.class),
             @ApiResponse(code = 500, message = "Error", response = DeviceDataResponseDTO.class)})
-    public ResponseEntity<String> start(@PathVariable("iotType") String type) {
+    public ResponseEntity<String> start(@PathVariable("iotType") @ApiParam(name = "iotType", value = "type of IOT managed",
+            allowableValues = "heartBeater,speedMeasurer,temperatureMeasurer", required = true) String type) {
 
         switch (type) {
             case "heartBeater":
@@ -64,7 +66,8 @@ public class IotRest {
     @ApiResponses(value = {@ApiResponse(code = 202, message = "ACCEPTED"),
             @ApiResponse(code = 400, message = "", response = DeviceDataResponseDTO.class),
             @ApiResponse(code = 500, message = "Error", response = DeviceDataResponseDTO.class)})
-    public ResponseEntity<String> resume(@PathVariable("iotType") String type) {
+    public ResponseEntity<String> resume(@PathVariable("iotType") @ApiParam(name = "iotType", value = "type of IOT managed",
+            allowableValues = "heartBeater,speedMeasurer,temperatureMeasurer", required = true) String type) {
 
         switch (type) {
             case "heartBeater":
@@ -92,7 +95,8 @@ public class IotRest {
     @ApiResponses(value = {@ApiResponse(code = 202, message = "ACCEPTED"),
             @ApiResponse(code = 400, message = "", response = DeviceDataResponseDTO.class),
             @ApiResponse(code = 500, message = "Error", response = DeviceDataResponseDTO.class)})
-    public ResponseEntity<String> stop(@PathVariable("iotType") String type) {
+    public ResponseEntity<String> stop(@PathVariable("iotType") @ApiParam(name = "iotType", value = "type of IOT managed",
+            allowableValues = "heartBeater,speedMeasurer,temperatureMeasurer", required = true) String type) {
 
         switch (type) {
             case "heartBeater":
