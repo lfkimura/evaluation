@@ -8,14 +8,13 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 
 @Service
-public class HeartBeater  extends IOTDevice{
+public class SpeedMeasurer extends IOTDevice{
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
     @PostConstruct
     public void init() {
-        deviceExecutor = new BeaterIOT();
+        deviceExecutor = new SpeedIOT();
         thread = new Thread(deviceExecutor);
     }
 
@@ -25,18 +24,18 @@ public class HeartBeater  extends IOTDevice{
     }
 
 
-    class BeaterIOT extends DeviceExecutor {
+    class SpeedIOT extends DeviceExecutor {
         @Override
         public void run() {
             while (keepRunning()) {
                 // keep doing what this thread should do.
-                logger.info("running hearBeater");
+                logger.info("running SpeedMeasurer");
 
                 try {
-                    Double max = 200.0,min=50.0;
+                    Double max = 140.0,min=0.0;
                     Double value = Math.floor(Math.random() * (max - min) + +min);
 
-                    DeviceInputDataDTO input = new DeviceInputDataDTO("beater", "KimuraCorp", "HeartBeater", "bpm", value.toString());
+                    DeviceInputDataDTO input = new DeviceInputDataDTO("speedometer", "KimuraCorp", "SpeedMeasurer", "km/h", value.toString());
                     this.sendIOTData(input);
 
                     Thread.sleep(1L * 1000L);

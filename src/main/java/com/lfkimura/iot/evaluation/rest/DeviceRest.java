@@ -1,7 +1,7 @@
 package com.lfkimura.iot.evaluation.rest;
 
-import com.lfkimura.iot.evaluation.dto.DeviceInputDataDTO;
 import com.lfkimura.iot.evaluation.dto.DeviceDataResponseDTO;
+import com.lfkimura.iot.evaluation.dto.DeviceInputDataDTO;
 import com.lfkimura.iot.evaluation.dto.DeviceResponseDTO;
 import com.lfkimura.iot.evaluation.dto.ValueDTO;
 import com.lfkimura.iot.evaluation.service.InputDeviceDataService;
@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.PathParam;
 import java.util.List;
 
 @RestController
