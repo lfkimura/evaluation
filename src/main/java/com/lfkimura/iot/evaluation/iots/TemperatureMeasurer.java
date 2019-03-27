@@ -16,7 +16,7 @@ public class TemperatureMeasurer extends IOTDevice {
     @PostConstruct
     public void init() {
         deviceExecutor = new TemperatureIOT();
-        Thread thread = new Thread(deviceExecutor);
+        thread = new Thread(deviceExecutor);
     }
 
     @Override
